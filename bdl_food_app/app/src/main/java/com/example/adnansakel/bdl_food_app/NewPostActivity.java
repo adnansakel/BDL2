@@ -89,7 +89,7 @@ public class NewPostActivity extends Activity implements View.OnClickListener {
 
         viewNewsFeed.setOnClickListener(this);
         viewOrders.setOnClickListener(this);
-       // buttonPost.setOnClickListener(this);
+        buttonPost.setOnClickListener(this);
 
         radioButtonBuy.setOnClickListener(this);
         radioButtonSell.setOnClickListener(this);
