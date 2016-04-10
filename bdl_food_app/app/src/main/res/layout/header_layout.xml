@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="63dp"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="58dp"
+        android:background="#80b545"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            >
+            <View
+                android:layout_width="58dp"
+                android:layout_height="58dp"
+
+                android:background="@drawable/settingsblack"/>
+        </LinearLayout>
+        <View
+            android:layout_width="1.5dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center_vertical"
+            android:background="#bbbbbb"/>
+        <LinearLayout
+            android:id="@+id/linear_layout_news_feed"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:background="#33ffffff"
+            >
+            <View
+                android:id="@+id/view_news_feed"
+                android:layout_width="58dp"
+                android:layout_height="58dp"
+
+                android:background="@drawable/home_white"/>
+        </LinearLayout>
+        <View
+            android:layout_width="1.5dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center_vertical"
+            android:background="#bbbbbb"/>
+        <LinearLayout
+            android:id="@+id/llOrder"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            >
+            <View
+                android:id="@+id/viewOrders"
+                android:layout_width="58dp"
+                android:layout_height="58dp"
+
+                android:background="@drawable/cart_black"
+                android:clickable="true"
+                 />
+        </LinearLayout>
+        <View
+            android:layout_width="1.5dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center_vertical"
+            android:background="#bbbbbb"/>
+        <LinearLayout
+            android:id="@+id/linear_layout_new_post"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            >
+            <View
+                android:id="@+id/view_new_post"
+                android:layout_width="58dp"
+                android:layout_height="58dp"
+
+                android:background="@drawable/add_new_black"/>
+        </LinearLayout>
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#888888"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="#cccccc"/>
+
+</LinearLayout>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#55ffffff">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:gravity="center_vertical">
+        <TextView
+            android:id="@+id/textViewDishName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:layout_marginLeft="5dp"
+            android:text="Dish name: xyz"/>
+
+        <TextView
+            android:id="@+id/textViewLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:layout_marginLeft="5dp"
+            android:text="Location: Kista"/>
+        <TextView
+            android:id="@+id/textViewOrderBefore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:layout_marginLeft="5dp"
+            android:textColor="#ff0000"
+            android:text="Order before:15.00, 22/6/2016"
+            />
+        <TextView
+            android:id="@+id/textViewPostMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:textSize="20sp"
+            android:layout_marginLeft="5dp"
+            android:text="Post content"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1.90"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/textViewDishLeft"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:textSize="20sp"
+                android:textColor="#80cf45"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                android:text="5 left"/>
+            <ImageView
+                android:id="@+id/imageViewDishImage"
+                android:layout_width="95dp"
+                android:layout_height="95dp"
+                android:background="@drawable/foodbackground"/>
+            <TextView
+                android:id="@+id/textViewDishPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:textSize="20sp"
+                android:textColor="#ff0000"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                android:text="50 SEK"/>
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="50dp"
+            android:background="@drawable/right_arrow"
+            android:layout_marginLeft="5dp"/>
+    </LinearLayout>
+</LinearLayout>
