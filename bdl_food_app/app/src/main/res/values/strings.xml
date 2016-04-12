@@ -3,6 +3,7 @@
     <string name="pay_pal">pay_pal</string>
     <string name="title_activity_pay_pal_selection">PayPal_selection</string>
     <string name="action_settings">Settings</string>
+    <string name="title_activity_image">Image Activitt</string>
     <string name="title_activity_pay_pal_sdk">PayPal_sdk</string>
     <string name="sample_text">Radio buttons allow the user to select one option from a set. You should use radio buttons for optional sets that are mutually exclusive if you think that the user needs to see all available options side-by-side.</string>
 </resources>

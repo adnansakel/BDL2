@@ -10,6 +10,7 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
+        android:largeHeap="true"
         android:theme="@style/AppTheme">
         <activity
             android:name="com.paypal.android.MEP.PayPalActivity"
@@ -28,6 +29,12 @@
             android:name=".PayPal_selection"
             android:label="@string/title_activity_pay_pal_selection" >
         </activity>
+
+        <activity
+            android:name=".Image"
+            android:label="@string/title_activity_image" >
+        </activity>
+
 
         <activity
             android:name=".PayPal_sdk"

@@ -62,8 +62,10 @@
                 android:text="5 left"/>
             <ImageView
                 android:id="@+id/imageViewDishImage"
-                android:layout_width="95dp"
-                android:layout_height="95dp"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
                 android:background="@drawable/foodbackground"/>
             <TextView
                 android:id="@+id/textViewDishPrice"

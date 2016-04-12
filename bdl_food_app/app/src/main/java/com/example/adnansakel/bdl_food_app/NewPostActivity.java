@@ -3,12 +3,16 @@ package com.example.adnansakel.bdl_food_app;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Base64;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.NumberPicker;
 import android.widget.RadioButton;
@@ -17,8 +21,10 @@ import android.widget.Toast;
 import android.widget.ArrayAdapter;
 
 import com.example.adnansakel.bdl_food_app.DataModel.AppConstants;
+import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
+import com.firebase.client.ValueEventListener;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -29,13 +35,15 @@ import java.util.Map;
 public class NewPostActivity extends Activity implements View.OnClickListener, AdapterView.OnItemSelectedListener,
 NumberPicker.OnValueChangeListener{
 
-    LinearLayout llSettings;
+    private static final int IMAGE_TAKEN = 9;
+	LinearLayout llSettings;
     View viewSettings;
     LinearLayout llNewsFeed;
     View viewNewsFeed;
     LinearLayout llNewPost;
     View viewNewPost;
     LinearLayout llOrders;
+    View viewCamera;
     View viewOrders;
 
     Button buttonPost;
@@ -49,6 +57,7 @@ NumberPicker.OnValueChangeListener{
     RadioButton radioButtonBuy;
     RadioButton radioButtonSell;
 
+    private  String encodeImage;
     ProgressDialog progress;
 
     Map<String,Object> post;
@@ -62,6 +71,21 @@ NumberPicker.OnValueChangeListener{
     EditText etServings;
     Spinner spLocation;
     String[] arraySpinner = {"Kista", "Sollentuna", "Barkarby", "Solna", "Morby", "Akalla", "Hellenlund", "Rinkeby", "Tensta"};
+
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        ImageView ivImage;
+        ivImage = (ImageView) (findViewById(R.id.ivImage));
+        if (requestCode == IMAGE_TAKEN) {
+            if(resultCode == RESULT_OK){
+                encodeImage  =data.getStringExtra("encoded_image");
+                byte[] imageAsBytes = Base64.decode(encodeImage , Base64.DEFAULT);
+                Bitmap bmp = BitmapFactory.decodeByteArray(imageAsBytes, 0, imageAsBytes.length);
+                ivImage.setImageBitmap(bmp);
+
+            }
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,6 +104,7 @@ NumberPicker.OnValueChangeListener{
         viewNewsFeed = (View)findViewById(R.id.view_news_feed);
         viewNewPost = (View)findViewById(R.id.view_new_post);
         viewOrders = (View)findViewById(R.id.viewOrders);
+		viewCamera = (View)findViewById(R.id.camera_view);
         viewSettings = (View)findViewById(R.id.view_settings);
 
         llNewPost.setBackgroundColor(Color.parseColor("#33ffffff"));
@@ -120,7 +145,7 @@ NumberPicker.OnValueChangeListener{
         viewNewsFeed.setOnClickListener(this);
         viewOrders.setOnClickListener(this);
         buttonPost.setOnClickListener(this);
-
+        viewCamera.setOnClickListener(this);
         radioButtonBuy.setOnClickListener(this);
         radioButtonSell.setOnClickListener(this);
 
@@ -146,7 +171,14 @@ NumberPicker.OnValueChangeListener{
             startActivity(new Intent(NewPostActivity.this, NewsFeedActivity.class));
             this.finish();
         }
-        else if(v == viewSettings){
+        if(v == viewCamera)
+        {
+            startActivityForResult(new Intent(NewPostActivity.this, Image.class), IMAGE_TAKEN);
+            //startActivity(new Intent(NewPostActivity.this, Image.class));
+            //this.finish();
+        }
+		
+        if(v == viewSettings){
             startActivity(new Intent(NewPostActivity.this, SettingsMenuActivity.class));
             this.finish();
         }
@@ -189,7 +221,7 @@ NumberPicker.OnValueChangeListener{
                 post.put("DishName", dishName);
                 post.put("Category", dishCategory);
                 post.put("Ingredients",editTextIngredients.getText().toString());
-                post.put("Image","http://somedummyurl/dummyimage");//image data should be saved in firebase
+                post.put("Image",encodeImage);
                 post.put("NumberofDishes",nbrOfServings);
                 post.put("PostMessage",editTextPostMessage.getText().toString());
                 post.put("BuyorSell",BuyorSell);
