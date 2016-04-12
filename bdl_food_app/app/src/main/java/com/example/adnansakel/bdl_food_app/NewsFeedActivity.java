@@ -3,9 +3,13 @@ package com.example.adnansakel.bdl_food_app;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Base64;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
@@ -139,6 +143,11 @@ public class NewsFeedActivity extends Activity implements View.OnClickListener, 
                 nfd.setOrderBefore(dataSnapshot.child("OrderBefore").getValue().toString());
                 nfd.setPrice("50");//for the time being some dummy price
                 nfd.setPostMessage(dataSnapshot.child("PostMessage").getValue().toString());
+
+
+                String Image_String = (String) dataSnapshot.child("Image").getValue();
+                if(Image_String != null){
+                nfd.setImage(Image_String);}
                 nfd.setIngredients(dataSnapshot.child("Ingredients").getValue().toString());
                 nfd.setPostKey(dataSnapshot.getKey().toString());
                 nfd.setPostOwner_UserID(dataSnapshot.child("UserID").getValue().toString());

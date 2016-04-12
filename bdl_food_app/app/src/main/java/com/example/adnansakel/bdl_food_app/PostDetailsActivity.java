@@ -3,7 +3,10 @@ package com.example.adnansakel.bdl_food_app;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -69,7 +72,11 @@ public class PostDetailsActivity extends Activity implements View.OnClickListene
         txtFoodPrice.setText(newsFeedData.getPrice()+" SEK");
         txtLocation.setText(newsFeedData.getLocation());
         txtPostDetails.setText(newsFeedData.getPostMessage());
+        String Image_String = newsFeedData.getImage();
+        byte[] imageAsBytes = Base64.decode(Image_String, Base64.DEFAULT);
+        Bitmap bmp = BitmapFactory.decodeByteArray(imageAsBytes, 0, imageAsBytes.length);
 
+        imgFoodPicture.setImageBitmap(bmp);
         order = new HashMap<String,Object>();
         order.put(AppConstants.USER_ID, "");
         order.put(AppConstants.POST_ID, newsFeedData.getPostKey());//post ID of the post being purchased

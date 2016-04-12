@@ -1,6 +1,9 @@
 package com.example.adnansakel.bdl_food_app.Adapters;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -82,7 +85,11 @@ public class NewsFeedListAdapter extends BaseAdapter{
         vholder.textViewDishName.setText("Dish: "+newsFeedList.get(position).getDishName());
         vholder.textViewLocation.setText("Location: "+newsFeedList.get(position).getLocation());
         vholder.textViewDishLeft.setText(newsFeedList.get(position).getNumberofDishes()+" Left");
-        vholder.textViewDishPrice.setText(newsFeedList.get(position).getPrice()+" SEK");
+        vholder.textViewDishPrice.setText(newsFeedList.get(position).getPrice() + " SEK");
+        String Image_String = newsFeedList.get(position).getImage();
+        byte[] imageAsBytes = Base64.decode(Image_String, Base64.DEFAULT);
+        Bitmap bmp = BitmapFactory.decodeByteArray(imageAsBytes, 0, imageAsBytes.length);
+        vholder.imageViewDishImage.setImageBitmap(bmp);
         vholder.textViewOrderBefore.setText("Order before: "+newsFeedList.get(position).getOrderBefore());
         vholder.textViewPostMessage.setText(newsFeedList.get(position).getPostMessage());
         return vi;

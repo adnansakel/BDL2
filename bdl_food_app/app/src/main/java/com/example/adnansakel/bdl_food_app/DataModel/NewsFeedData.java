@@ -1,5 +1,8 @@
 package com.example.adnansakel.bdl_food_app.DataModel;
 
+
+import android.graphics.Bitmap;
+
 import java.io.Serializable;
 
 /**
@@ -11,6 +14,7 @@ public class NewsFeedData implements Serializable{
     private String Location;
     private String OrderBefore;
     private String Price;
+    private String Image_Bitmap;
     private String NumberofDishes;
     private String PostMessage;
     private String Ingredients;
@@ -53,6 +57,12 @@ public class NewsFeedData implements Serializable{
         Price = price;
     }
 
+    public void setImage(String Image) {
+        Image_Bitmap = Image;
+    }
+    public String getImage() {
+        return Image_Bitmap;
+    }
     public String getNumberofDishes() {
         return NumberofDishes;
     }
