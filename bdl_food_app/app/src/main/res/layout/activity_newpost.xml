@@ -23,7 +23,7 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="5dp"
                 android:background="@drawable/edittext_bg_new"
-                android:hint="Dish name"
+                android:hint="Dish Name*"
                 />
             <EditText
                 android:id="@+id/editText_Category"
@@ -33,7 +33,7 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/edittext_bg_new"
-                android:hint="Category: Lunch, Dinner, Dessert"
+                android:hint="Category*: Lunch, Dinner, Dessert etc."
                 />
             <EditText
                 android:id="@+id/editTextIngredients"
@@ -52,17 +52,33 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp">
-                <EditText
-                    android:id="@+id/edittext_NumberofDishes"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:background="@drawable/edittext_bg_new"
-                    android:hint="Number of dishes"
-                    android:layout_weight="1"/>
+
+                <LinearLayout
+                    android:layout_width="150dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/edittext_bg_new">
+                    <TextView
+                        android:id="@+id/textView_NumberofDishes"
+                        android:layout_width="80dp"
+                        android:layout_height="match_parent"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:hint="Servings*"
+                        android:focusable="false"
+                        android:enabled="false"
+                        android:editable="false"
+                        android:elegantTextHeight="true" />
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberDecimal"
+                        android:ems="10"
+                        android:id="@+id/editText_Servings"
+                        android:layout_weight="1" />
+                </LinearLayout>
+
                 <RadioGroup
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:layout_weight="1"
                     android:orientation="horizontal"
                     android:gravity="center">
                     <RadioButton
@@ -78,16 +94,6 @@
                         android:text="Sell"/>
                 </RadioGroup>
             </LinearLayout>
-            <EditText
-                android:id="@+id/editText_postMessage"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/edittext_bg_new"
-                android:hint="Write post"
-                />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -104,13 +110,24 @@
                     android:layout_weight="1"
                     android:gravity="center_vertical"
                     android:orientation="vertical">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
                         android:textSize="18sp"
                         android:textStyle="bold"
-                        android:text="location: Kista"/>
+                            android:text="Location"/>
+                        <Spinner
+                            android:layout_width="match_parent"
+                            android:layout_height="25dp"
+                            android:id="@+id/spinner_location">
+                        </Spinner>
+
+                    </LinearLayout>
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -131,6 +148,18 @@
                         android:background="@drawable/foodbackground"/>
                 </LinearLayout>
             </LinearLayout>
+
+            <EditText
+                android:id="@+id/editText_postMessage"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/edittext_bg_new"
+                android:hint="Write post"
+                />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

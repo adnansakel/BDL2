@@ -22,11 +22,13 @@ import com.firebase.client.ValueEventListener;
  */
 public class OrderListActivity extends Activity implements View.OnClickListener{
 
+    LinearLayout llSettings;
+    View viewSettings;
     LinearLayout llNewsFeed;
     View viewNewsFeed;
     LinearLayout llNewPost;
-    LinearLayout llOrders;
     View viewNewPost;
+    LinearLayout llOrders;
     View viewOrders;
 
     ListView lvOrderList;
@@ -45,12 +47,17 @@ public class OrderListActivity extends Activity implements View.OnClickListener{
 
     private void initializeComponent(){
 
+        llSettings = (LinearLayout)findViewById(R.id.linear_layout_settings);
         llNewsFeed = (LinearLayout)findViewById(R.id.linear_layout_news_feed);
         llNewPost = (LinearLayout)findViewById(R.id.linear_layout_new_post);
         llOrders = (LinearLayout)findViewById(R.id.llOrder);
+        viewSettings = (View)findViewById(R.id.view_settings);
         viewNewsFeed = (View)findViewById(R.id.view_news_feed);
         viewNewPost = (View)findViewById(R.id.view_new_post);
         viewOrders = (View)findViewById(R.id.viewOrders);
+
+        llSettings.setBackgroundColor(Color.parseColor("#00ffffff"));
+        viewSettings.setBackgroundResource(R.drawable.settingsblack);
 
         llOrders.setBackgroundColor(Color.parseColor("#33ffffff"));
         viewOrders.setBackgroundResource(R.drawable.cart_white);
@@ -62,6 +69,7 @@ public class OrderListActivity extends Activity implements View.OnClickListener{
         viewNewsFeed.setBackgroundResource(R.drawable.home_black);
 
 
+        viewSettings.setOnClickListener(this);
         viewNewPost.setOnClickListener(this);
         viewNewsFeed.setOnClickListener(this);
 
@@ -137,6 +145,11 @@ public class OrderListActivity extends Activity implements View.OnClickListener{
 
     @Override
     public void onClick(View v) {
+        if( v == viewSettings )
+        {
+            startActivity(new Intent(OrderListActivity.this, SettingsMenuActivity.class));
+            this.finish();
+        }
         if(v == viewNewPost){
             startActivity(new Intent(OrderListActivity.this,NewPostActivity.class));
             this.finish();
