@@ -54,23 +54,25 @@
                 android:layout_marginRight="10dp">
 
                 <LinearLayout
-                    android:layout_width="150dp"
+                    android:layout_width="200dp"
                     android:layout_height="50dp"
                     android:background="@drawable/edittext_bg_new">
                     <TextView
                         android:id="@+id/textView_NumberofDishes"
-                        android:layout_width="80dp"
+                        android:layout_width="100dp"
                         android:layout_height="match_parent"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:hint="Servings*"
+                        android:hint="Servings*:"
                         android:focusable="false"
                         android:enabled="false"
                         android:editable="false"
+                        android:gravity="center_vertical"
                         android:elegantTextHeight="true" />
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="numberDecimal"
+                        android:hint= "x servings"
                         android:ems="10"
                         android:id="@+id/editText_Servings"
                         android:layout_weight="1" />
@@ -105,7 +107,7 @@
                 android:background="#55ffffff">
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
+                    android:layout_height="140dp"
                     android:layout_marginTop="5dp"
                     android:layout_weight="1"
                     android:gravity="center_vertical"
@@ -113,34 +115,144 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="30dp">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="5dp"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
                             android:text="Location"/>
                         <Spinner
                             android:layout_width="match_parent"
-                            android:layout_height="25dp"
+                            android:layout_height="match_parent"
                             android:id="@+id/spinner_location">
                         </Spinner>
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:text="Order Before:"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:textSize="20sp"
+                            android:text="Time*:"
+                            android:gravity="center_vertical"
+                            android:id="@+id/textView_time_string" />
+                        <EditText
+                            android:layout_width="30dp"
+                            android:inputType="numberDecimal"
+                            android:hint="hh"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/editText_time_hours">
+                        </EditText>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="3dp"
+                            android:layout_marginRight="3dp"
+                            android:textSize="18sp"
+                            android:gravity="center_vertical"
+                            android:textStyle="bold"
+                            android:text=":" />
+                        <EditText
+                            android:layout_width="40dp"
+                            android:inputType="numberDecimal"
+                            android:hint="mm"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/editText_time_minutes">
+                        </EditText>
 
                     </LinearLayout>
 
-                    <TextView
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="3dp"
+                            android:layout_marginRight="3dp"
+                            android:textSize="20sp"
+                            android:text="Date*:"
+                            android:gravity="center_vertical"
+                            android:id="@+id/textView_Date_string" />
+
+                        <EditText
+                            android:layout_width="30dp"
+                            android:layout_height="wrap_content"
+                            android:inputType="numberDecimal"
+                            android:hint="dd"
+                            android:id="@+id/editText_date_day">
+                        </EditText>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="3dp"
+                            android:layout_marginRight="3dp"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:gravity="center_vertical"
+                            android:text="/" />
+
+                        <EditText
+                            android:layout_width="40dp"
+                            android:layout_height="wrap_content"
+                            android:inputType="numberDecimal"
+                            android:hint="mm"
+                            android:id="@+id/editText_date_month">
+                        </EditText>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:gravity="center_vertical"
+                            android:text="/" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="5dp"
+                            android:textSize="18sp"
+                            android:gravity="center_vertical"
+                            android:text="2016"
+                            android:id="@+id/textView_date_year" />
+
+                    </LinearLayout>
+                    <!--<TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
                         android:textSize="18sp"
                         android:textStyle="bold"
                         android:text="Order before: 15.00, 22-06-2016"/>
+                    -->
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
+                    android:layout_height="140dp"
                     android:layout_marginTop="5dp"
-                    android:layout_weight="1"
+                    android:layout_weight="2"
                     android:gravity="center">
                     <ImageView
                         android:layout_width="110dp"

@@ -60,6 +60,14 @@ NumberPicker.OnValueChangeListener{
 
     Integer nbrOfServings = 0;
     EditText etServings;
+
+    Integer OrderBeforeTimeHours, OrderBeforeTimeMinutes;
+    EditText etTimeHours, etTimeMinutes;
+
+    Integer OrderBeforeDateDay, OrderBeforeDateMonth, OrderBeforeDateYear;
+    EditText etDateDay, etDateMonth;
+
+
     Spinner spLocation;
     String[] arraySpinner = {"Kista", "Sollentuna", "Barkarby", "Solna", "Morby", "Akalla", "Hellenlund", "Rinkeby", "Tensta"};
 
@@ -125,6 +133,10 @@ NumberPicker.OnValueChangeListener{
         radioButtonSell.setOnClickListener(this);
 
         etServings = (EditText)findViewById(R.id.editText_Servings);
+        etTimeHours = (EditText)findViewById(R.id.editText_time_hours);
+        etTimeMinutes = (EditText)findViewById(R.id.editText_time_minutes);
+        etDateDay = (EditText)findViewById(R.id.editText_date_day);
+        etDateMonth = (EditText)findViewById(R.id.editText_date_month);
 
         spLocation = (Spinner)findViewById(R.id.spinner_location);
         ArrayAdapter<String> spAdapter = new ArrayAdapter<String>(this,
@@ -138,6 +150,54 @@ NumberPicker.OnValueChangeListener{
 
         postRef = new Firebase(AppConstants.FirebaseUri+"/"+AppConstants.POSTS);
 
+    }
+
+    private String readOrderBeforeInfo(){
+        String timedate = "";
+
+        try {
+            OrderBeforeTimeHours = Integer.parseInt(etTimeHours.getText().toString());
+        }
+        catch(NumberFormatException e){ OrderBeforeTimeHours = 0;}
+
+        try {
+            OrderBeforeTimeMinutes = Integer.parseInt(etTimeMinutes.getText().toString());
+        }
+        catch(NumberFormatException e){ OrderBeforeTimeMinutes = 0;}
+
+        try {
+            OrderBeforeDateDay = Integer.parseInt(etDateDay.getText().toString());
+        }
+        catch(NumberFormatException e){ OrderBeforeDateDay = 0;}
+
+        try {
+            OrderBeforeDateMonth = Integer.parseInt(etDateMonth.getText().toString());
+        }
+        catch(NumberFormatException e){ OrderBeforeDateMonth = 0;}
+
+        OrderBeforeDateYear = 2016;
+
+        if((OrderBeforeTimeHours < 0) || (OrderBeforeTimeHours > 24) ||
+                (OrderBeforeTimeMinutes > 60) || (OrderBeforeTimeMinutes < 0)
+                || ((OrderBeforeTimeHours == 24) && (OrderBeforeTimeMinutes != 0)))
+
+        {
+            Toast toast = Toast.makeText(this.getApplicationContext(), "Invalid Time!", Toast.LENGTH_LONG);
+            toast.show();
+        }
+        else if((OrderBeforeDateDay <= 0) || (OrderBeforeDateDay > 31) ||
+                (OrderBeforeDateMonth <= 0) || (OrderBeforeDateMonth > 12)){
+            Toast toast = Toast.makeText(this.getApplicationContext(), "Invalid Date!", Toast.LENGTH_LONG);
+            toast.show();
+        }
+        else
+        {
+            timedate = "Time: " + OrderBeforeTimeHours.toString() + ":" + OrderBeforeTimeMinutes.toString() +
+                    " " + "Date: " +  OrderBeforeDateDay.toString() + "-" + OrderBeforeDateMonth.toString() +
+                    "-" +  OrderBeforeDateYear.toString();
+        }
+
+        return timedate;
     }
 
     @Override
@@ -156,13 +216,15 @@ NumberPicker.OnValueChangeListener{
         }
         if( v == buttonPost){
 
-            String dishName, dishCategory;//,nbrOfServings;
+            String dishName, dishCategory, timeDateString;
             dishName = editTextDishName.getText().toString();
             dishCategory = editTextCategory.getText().toString();
             try {
                 nbrOfServings = Integer.parseInt(etServings.getText().toString());
             }
             catch(NumberFormatException e){ nbrOfServings = 0;}
+
+            timeDateString = readOrderBeforeInfo();
 
             if(dishName.equals(""))
             {
@@ -179,13 +241,16 @@ NumberPicker.OnValueChangeListener{
                 Toast toast = Toast.makeText(this.getApplicationContext(), "Please Enter Number of Servings!", Toast.LENGTH_LONG);
                 toast.show();
             }
+            else if (timeDateString.equals ("")){
+                //toast will appear from readOrderBeforeInfo()
+            }
             else
             {
                 final Map<String,Object> post = new HashMap<String,Object>();
                 post.put(AppConstants.USER_ID,AppConstants.UserID);
                 post.put("FirebaseUserKey",AppConstants.FirebaseUserkey);
                 post.put("Location", postLocation);//some dummy data for the time being
-                post.put("OrderBefore","15.00 22-06-2016");//time should be saved as a number yyyymmddhhmm
+                post.put("OrderBefore", timeDateString);//time should be saved as a number yyyymmddhhmm
                 post.put("DishName", dishName);
                 post.put("Category", dishCategory);
                 post.put("Ingredients",editTextIngredients.getText().toString());
@@ -217,7 +282,6 @@ NumberPicker.OnValueChangeListener{
                                     if (firebaseError != null) {
                                         //error occured
                                         progress.dismiss();
-
 
                                     } else {
                                         //success

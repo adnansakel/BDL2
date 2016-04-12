@@ -7,8 +7,10 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.Spinner;
 
 import com.example.adnansakel.bdl_food_app.Adapters.NewsFeedListAdapter;
 import com.example.adnansakel.bdl_food_app.DataModel.AppConstants;
@@ -26,7 +28,7 @@ import java.util.List;
 /**
  * Created by Adnan Sakel on 3/29/2016.
  */
-public class NewsFeedActivity extends Activity implements View.OnClickListener {
+public class NewsFeedActivity extends Activity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
     LinearLayout llNewsFeed;
     View viewNewsFeed;
     LinearLayout llNewPost;
@@ -40,6 +42,10 @@ public class NewsFeedActivity extends Activity implements View.OnClickListener {
     NewsFeedListAdapter newsfeedlistadapter;
 
     ProgressDialog progress;
+
+    Integer newsFeedSortRule = 0;
+    Spinner spSortRule;
+    String[] arrSpSortRule = {"All", "Buy Requests", "Sell Requests", "Post Time", "Price", "Servings", "Location"};
 
     //private List<NewsFeedData> newsFeedDataList;
     @Override
@@ -90,8 +96,8 @@ public class NewsFeedActivity extends Activity implements View.OnClickListener {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 NewsFeedData newsFeedData = new NewsFeedData();
-                newsFeedData = (NewsFeedData)newsfeedlistadapter.getItem(position);
-                startActivity(new Intent(NewsFeedActivity.this,PostDetailsActivity.class).putExtra(AppConstants.POST_DETAILS,newsFeedData));
+                newsFeedData = (NewsFeedData) newsfeedlistadapter.getItem(position);
+                startActivity(new Intent(NewsFeedActivity.this, PostDetailsActivity.class).putExtra(AppConstants.POST_DETAILS, newsFeedData));
                 NewsFeedActivity.this.finish();
             }
         });
@@ -103,6 +109,11 @@ public class NewsFeedActivity extends Activity implements View.OnClickListener {
 
         loadNewsFeed();
 
+        spSortRule = (Spinner)findViewById(R.id.spinner_sort_newsfeed);
+        ArrayAdapter<String> spSrAdapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_item, arrSpSortRule);
+        spSortRule.setAdapter(spSrAdapter);
+        spSortRule.setOnItemSelectedListener(this);
     }
 
     private void loadNewsFeed(){
@@ -120,8 +131,8 @@ public class NewsFeedActivity extends Activity implements View.OnClickListener {
                 //System.out.println("Hello");
                 //System.out.println(dataSnapshot.toString());
                 //for(DataSnapshot post : dataSnapshot.getChildren()){
-                    NewsFeedData nfd = new NewsFeedData();
-                   // PostData pd = dataSnapshot.getValue(PostData.class); not working; don't know why
+                NewsFeedData nfd = new NewsFeedData();
+                // PostData pd = dataSnapshot.getValue(PostData.class); not working; don't know why
                 nfd.setDishName(dataSnapshot.child("DishName").getValue().toString());
                 nfd.setLocation(dataSnapshot.child("Location").getValue().toString());
                 nfd.setNumberofDishes(dataSnapshot.child("NumberofDishes").getValue().toString());
@@ -135,16 +146,16 @@ public class NewsFeedActivity extends Activity implements View.OnClickListener {
                 newsfeedlistadapter.addItem(nfd);
                 progress.dismiss();
                 //System.out.println(dataSnapshot.getKey().toString());
-                   // System.out.println("Posts :"+post.getKey()+"\n"+post.getValue().toString());
+                // System.out.println("Posts :"+post.getKey()+"\n"+post.getValue().toString());
 
-               // }
+                // }
 
 
             }
 
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-                    System.out.println("Came here 1");
+                System.out.println("Came here 1");
             }
 
             @Override
@@ -183,5 +194,17 @@ public class NewsFeedActivity extends Activity implements View.OnClickListener {
             startActivity(new Intent(NewsFeedActivity.this, SettingsMenuActivity.class));
             this.finish();
         }
+    }
+
+    @Override
+    public void onItemSelected(AdapterView parent, View v, int position, long id) {
+        //if()
+        {
+            newsFeedSortRule = position;
+        }
+    }
+    @Override
+    public void onNothingSelected(AdapterView parent) {
+        newsFeedSortRule = 0;
     }
 }
