@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.util.Base64;
 import android.view.View;
@@ -26,6 +27,7 @@ import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
 
+import java.io.ByteArrayOutputStream;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -103,6 +105,15 @@ NumberPicker.OnValueChangeListener{
     }
 
     private void initializeComponent(){
+
+        ImageView ivImage;
+        ivImage = (ImageView) (findViewById(R.id.ivImage));
+
+        Bitmap bitmap = ((BitmapDrawable)ivImage.getDrawable()).getBitmap();
+        ByteArrayOutputStream stream=new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 10, stream);
+        byte[] image=stream.toByteArray();
+        encodeImage = Base64.encodeToString(image, 0);
 
         llNewsFeed = (LinearLayout)findViewById(R.id.linear_layout_news_feed);
         llNewPost = (LinearLayout)findViewById(R.id.linear_layout_new_post);
