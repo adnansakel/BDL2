@@ -21,7 +21,8 @@ import java.util.List;
  * Created by Adnan Sakel on 3/30/2016.
  */
 public class NewsFeedListAdapter extends BaseAdapter{
-
+    private byte[] imageAsBytesl;
+    public String Image_String;
     private List<NewsFeedData> newsFeedList;
     private Context context;
     public NewsFeedListAdapter(Context context){
@@ -86,9 +87,10 @@ public class NewsFeedListAdapter extends BaseAdapter{
         vholder.textViewLocation.setText("Location: "+newsFeedList.get(position).getLocation());
         vholder.textViewDishLeft.setText(newsFeedList.get(position).getNumberofDishes()+" Left");
         vholder.textViewDishPrice.setText(newsFeedList.get(position).getPrice() + " SEK");
-        String Image_String = newsFeedList.get(position).getImage();
-        byte[] imageAsBytes = Base64.decode(Image_String, Base64.DEFAULT);
-        Bitmap bmp = BitmapFactory.decodeByteArray(imageAsBytes, 0, imageAsBytes.length);
+        Image_String = newsFeedList.get(position).getImage();
+        if(Image_String != null)
+        imageAsBytesl = Base64.decode(Image_String, Base64.DEFAULT);
+        Bitmap bmp = BitmapFactory.decodeByteArray(imageAsBytesl, 0, imageAsBytesl.length);
         vholder.imageViewDishImage.setImageBitmap(bmp);
         vholder.textViewOrderBefore.setText("Order before: "+newsFeedList.get(position).getOrderBefore());
         vholder.textViewPostMessage.setText(newsFeedList.get(position).getPostMessage());
