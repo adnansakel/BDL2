@@ -24,7 +24,7 @@
                     android:layout_height="190dp"
                     android:adjustViewBounds="true"
                     android:scaleType="centerCrop"
-                    android:background="@drawable/foodbackground"
+                    android:background="@drawable/lamb_kabab"
                     android:id="@+id/imageViewFoodImage"/>
             </LinearLayout>
             <LinearLayout

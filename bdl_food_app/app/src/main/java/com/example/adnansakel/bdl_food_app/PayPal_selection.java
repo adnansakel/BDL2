@@ -1,21 +1,24 @@
 package com.example.adnansakel.bdl_food_app;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 
 import com.example.adnansakel.bdl_food_app.DataModel.AppConstants;
 import com.example.adnansakel.bdl_food_app.DataModel.NewsFeedData;
 
 
-public class PayPal_selection extends ActionBarActivity implements View.OnClickListener {
+public class PayPal_selection extends Activity implements View.OnClickListener {
 
     NewsFeedData newsFeedData;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_pay_pal_selection);
 
         newsFeedData = new NewsFeedData();
