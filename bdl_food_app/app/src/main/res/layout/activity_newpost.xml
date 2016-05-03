@@ -260,7 +260,8 @@
                     android:layout_height="wrap_content"
                     android:adjustViewBounds="true"
                     android:scaleType="centerCrop"
-                        android:background="@drawable/foodbackground"/>
+                        android:background="@drawable/foodbackground"
+                        android:src="@drawable/icon_food"/>
                 </LinearLayout>
             </LinearLayout>
 
