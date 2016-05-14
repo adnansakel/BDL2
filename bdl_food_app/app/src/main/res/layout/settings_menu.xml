@@ -3,9 +3,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/foodbackgroundblur">
+    android:background="#ffffff">
 
-    <include layout="@layout/header_layout"></include>
+    <include layout="@layout/tool_bar"></include>
 
     <ListView
         android:layout_width="match_parent"

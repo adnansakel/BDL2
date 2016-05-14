@@ -1,4 +1,4 @@
-package com.example.adnansakel.bdl_food_app;
+package com.foogle.adnansakel.bdl_food_app;
 
 import org.junit.Test;
 

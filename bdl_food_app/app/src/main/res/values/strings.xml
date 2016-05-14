@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">bdl_food_app</string>
+    <string name="app_name">foogle</string>
     <string name="pay_pal">pay_pal</string>
     <string name="title_activity_pay_pal_selection">PayPal_selection</string>
     <string name="action_settings">Settings</string>

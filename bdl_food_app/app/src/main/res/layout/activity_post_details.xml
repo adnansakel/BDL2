@@ -2,8 +2,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/foodbackgroundblur">
-    <include layout="@layout/header_layout"></include>
+    android:background="#ffffff"
+    >
+    <include
+        android:id="@+id/tool_bar"
+        layout="@layout/tool_bar"
+        android:layout_height="45dp"
+        android:layout_width="match_parent"
+        />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -31,7 +37,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:background="#55ffffff"
+                android:background="#8880b545"
                 android:gravity="center">
                 <TextView
                     android:id="@+id/textViewDishName"
@@ -41,6 +47,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
                     android:textSize="20sp"
+                    android:textColor="#000000"
                     android:gravity="center"
                     android:text="Burger"/>
             </LinearLayout>
@@ -48,7 +55,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:background="#55ffffff"
+                android:background="#8880b545"
                 android:gravity="center">
                 <TextView
                     android:id="@+id/textViewItemPrice"
@@ -66,7 +73,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:background="#55ffffff"
+                android:background="#8880b545"
                 android:gravity="center">
                 <TextView
                     android:layout_width="match_parent"
@@ -74,7 +81,7 @@
                     android:layout_gravity="center"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
-
+                    android:textColor="#000000"
                     android:textSize="20sp"
                     android:gravity="center"
                     android:text="Name, Location"
@@ -84,7 +91,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:background="#55ffffff"
+                android:background="#8880b545"
                 android:gravity="center">
                 <TextView
                     android:id="@+id/textViewFoodIngredients"
@@ -93,7 +100,7 @@
                     android:layout_gravity="center"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
-
+                    android:textColor="#000000"
                     android:textSize="20sp"
                     android:gravity="center"
                     android:text="Ingredients"/>
@@ -102,7 +109,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:background="#55ffffff"
+                android:background="#8880b545"
                 android:gravity="center">
                 <TextView
                     android:id="@+id/textViewFoodPostDetails"
@@ -111,7 +118,7 @@
                     android:layout_gravity="center"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
-
+                    android:textColor="#000000"
                     android:textSize="20sp"
                     android:gravity="center"
                     android:text="@string/sample_text"/>
@@ -127,6 +134,18 @@
                 android:textSize="25sp"
                 android:textColor="#ffffff"
                 android:background="@drawable/rounded_rect_orange"/>
+            <Button
+                android:id="@+id/chatButton"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:text="Send a Message"
+                android:textSize="25sp"
+                android:textColor="#ffffff"
+                android:background="@drawable/rounded_rect_blue"
+                android:visibility="gone"/>
         </LinearLayout>
     </ScrollView>
 

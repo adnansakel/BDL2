@@ -2,10 +2,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/foodbackgroundblur">
+    android:id="@+id/llnewPost"
+    android:background="#ffffff"
+    >
 <LinearLayout
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:id="@+id/llheader">
     <include layout="@layout/header_layout"></include>
 </LinearLayout>
     <ScrollView
@@ -22,7 +25,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="5dp"
-                android:background="@drawable/edittext_bg_new"
+                android:background="@drawable/edittext_bg"
                 android:hint="Dish Name*"
                 />
             <EditText
@@ -33,7 +36,7 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/edittext_bg_new"
-                android:hint="Category*: Lunch, Dinner, Dessert etc."
+                android:hint="Vegetarian, Non vegeterian, Halal *"
                 />
             <EditText
                 android:id="@+id/editTextIngredients"
@@ -42,7 +45,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/edittext_bg_new"
+                android:background="@drawable/edittext_bg"
                 android:hint="Ingredients"
                 />
             <LinearLayout
@@ -54,9 +57,9 @@
                 android:layout_marginRight="10dp">
 
                 <LinearLayout
-                    android:layout_width="200dp"
-                    android:layout_height="50dp"
-                    android:background="@drawable/edittext_bg_new">
+                    android:layout_width="100dp"
+                    android:layout_height="40dp"
+                    >
                     <TextView
                         android:id="@+id/textView_NumberofDishes"
                         android:layout_width="100dp"
@@ -67,22 +70,53 @@
                         android:enabled="false"
                         android:editable="false"
                         android:gravity="center_vertical"
-                        android:elegantTextHeight="true" />
+                        android:elegantTextHeight="true"
+                        android:visibility="gone"/>
                     <EditText
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:inputType="numberDecimal"
                         android:hint= "x servings"
                         android:ems="10"
                         android:id="@+id/editText_Servings"
+                        android:background="@drawable/edittext_bg"
                         android:layout_weight="1" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_marginLeft="10dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="5dp"
+                        android:gravity="center_vertical"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:text="Location:"
+                        android:visibility="gone"/>
+                    <EditText
+                        android:id="@+id/editTextLocation"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:hint="Location*"
+                        android:background="@drawable/edittext_bg"/>
+                    <Spinner
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:id="@+id/spinner_location"
+                        android:visibility="gone">
+                    </Spinner>
                 </LinearLayout>
 
                 <RadioGroup
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:orientation="horizontal"
-                    android:gravity="center">
+                    android:gravity="center"
+                    android:visibility="gone">
                     <RadioButton
                         android:id="@+id/radioButton_Buy"
                         android:layout_width="wrap_content"
@@ -104,7 +138,7 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="5dp"
                 android:orientation="horizontal"
-                android:background="#55ffffff">
+                android:background="@drawable/green_border">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="140dp"
@@ -112,22 +146,7 @@
                     android:layout_weight="1"
                     android:gravity="center_vertical"
                     android:orientation="vertical">
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="30dp">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_marginLeft="5dp"
-                            android:textSize="18sp"
-                            android:textStyle="bold"
-                            android:text="Location"/>
-                        <Spinner
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:id="@+id/spinner_location">
-                        </Spinner>
-                    </LinearLayout>
+
 
 
                     <LinearLayout
@@ -139,7 +158,7 @@
                             android:layout_marginLeft="5dp"
                             android:textSize="18sp"
                             android:textStyle="bold"
-                            android:text="Order Before:"/>
+                            android:text="Ordering deadline:"/>
                     </LinearLayout>
 
                     <LinearLayout
@@ -265,17 +284,6 @@
                 </LinearLayout>
             </LinearLayout>
 
-            <EditText
-                android:id="@+id/editText_postMessage"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/edittext_bg_new"
-                android:hint="Write post"
-                />
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -284,20 +292,29 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="5dp"
-                android:background="#55ffffff">
+                android:background="#aa80b545">
 
 
-                <View
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
-                    android:layout_marginRight="15dp"
-                    android:background="@drawable/price"/>
 
-                <View
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
+                    <View
+                        android:id="@+id/viewPrice"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_marginRight="15dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/price"/>
 
-                    android:background="@drawable/clock_black"/>
+
+
+
+
+                    <View
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+
+                        android:background="@drawable/clock_black"/>
+
+
                 <View
                     android:layout_width="60dp"
                     android:layout_height="55dp"
@@ -313,6 +330,18 @@
 
 
             </LinearLayout>
+            <EditText
+                android:id="@+id/editText_postMessage"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/edittext_bg_new"
+                android:hint="Write post"
+                />
+
+
             <Button
                 android:id="@+id/button_post"
                 android:layout_width="match_parent"

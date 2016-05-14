@@ -2,16 +2,27 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/foodbackgroundblur">
+    android:background="#ffffff"
+    >
 
     <EditText
-        android:id="@+id/editText_email"
+        android:id="@+id/editText_UserName"
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:layout_marginRight="30dp"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="100dp"
-        android:hint="email"
+        android:hint="Full name *"
+        android:textColor="#888888"
+        android:background="@drawable/edittext_bg"/>
+    <EditText
+        android:id="@+id/editText_email"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="30dp"
+        android:hint="email *"
         android:textColor="#888888"
         android:background="@drawable/edittext_bg"/>
     <EditText
@@ -21,7 +32,7 @@
         android:layout_marginRight="30dp"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="10dp"
-        android:hint="password"
+        android:hint="password *"
         android:inputType="textPassword"
         android:textColor="#888888"
         android:background="@drawable/edittext_bg"/>
@@ -32,7 +43,7 @@
         android:layout_marginRight="30dp"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="10dp"
-        android:hint="verify password"
+        android:hint="verify password *"
         android:inputType="textPassword"
         android:textColor="#888888"
         android:background="@drawable/edittext_bg"/>

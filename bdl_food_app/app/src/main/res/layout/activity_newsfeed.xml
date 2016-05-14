@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent"
-    android:background="@drawable/foodbackgroundblur">
+    android:id="@+id/rlNewsFeed"
+    android:background="#ffffff">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -14,37 +15,46 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:id="@+id/llnewsfeedheader"
+        android:gravity="center"
+        android:orientation="horizontal"
         android:layout_below="@+id/llheader">
+
+        <EditText
+            android:layout_width="250dp"
+            android:layout_height="40dp"
+
+            android:id="@+id/edtxtSearch"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/edittext_bg_new"
+            android:hint="Search"
+            />
         <Spinner
-            android:layout_width="100dp"
+            android:layout_width="20dp"
             android:layout_height="match_parent"
             android:textSize="18sp"
             android:id="@+id/spinner_sort_newsfeed">
         </Spinner>
-        <EditText
-            android:layout_width="220dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:id="@+id/edtxtSearch"
-            android:layout_centerHorizontal="true"
-            android:hint="Search"
-            />
-        <View
-            android:layout_width="50dp"
+        <Button
+            android:layout_width="45dp"
             android:layout_height="wrap_content"
             android:background="@drawable/search_black"
             android:layout_toRightOf="@+id/edtxtSearch"
             android:layout_marginTop="5dp"
-            android:layout_marginLeft="-10dp"
+            android:layout_marginLeft="10dp"
             />
 
     </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/llnewsfeedheader"
+        android:background="#aaaaaa"/>
 
     <ListView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/lvNewsfeed"
 
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="1dp"
         android:layout_below="@+id/llnewsfeedheader"></ListView>
 </RelativeLayout>

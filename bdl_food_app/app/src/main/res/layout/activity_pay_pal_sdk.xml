@@ -1,11 +1,14 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context=".PayPal_sdk"
-    android:background="@drawable/foodbackground">
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="#ffffff"
+    >
 
     <TextView
         android:layout_width="wrap_content"
@@ -23,15 +26,20 @@
         android:hint="Enter Chef&apos;s Email Id"
         android:layout_height="wrap_content"
         android:id="@+id/editText_friend_name"
-        android:layout_below="@+id/textView2"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="60dp" />
+        android:layout_marginTop="60dp"
+        android:visibility="gone"/>
 
-    <EditText
+    <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/editText_amount"
-        android:hint="Enter Amount"
+        android:id="@+id/textView_amount"
+        android:textSize="30sp"
+        android:gravity="center"
+        android:textColor="#ff0000"
+        android:textStyle="bold"
+        android:text="50"
+        android:visibility="gone"
         android:layout_below="@+id/editText_friend_name"
         android:layout_centerHorizontal="true" />
 
@@ -40,8 +48,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/button_paywithpaypal"
         android:background="@drawable/btn_checkout"
-        android:layout_marginTop="73dp"
-        android:layout_below="@+id/editText_amount"
+        android:layout_marginTop="20dp"
         android:layout_centerHorizontal="true" />
 
-</RelativeLayout>
+</LinearLayout>

@@ -1,46 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal" android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="#55ffffff">
-    <LinearLayout
+    android:layout_height="145dp"
+    android:background="#88ffffff">
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:orientation="vertical"
-        android:gravity="center_vertical">
-        <TextView
-            android:id="@+id/textViewDishName"
+        android:layout_marginLeft="5dp"
+        >
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:layout_marginLeft="5dp"
-            android:text="Dish name: xyz"/>
+            android:layout_centerVertical="true"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/textViewDishName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:layout_marginLeft="5dp"
+                android:textColor="#000000"
+                android:text="Dish name: xyz"/>
+
+            <TextView
+                android:id="@+id/textViewLocation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textColor="#000000"
+                android:layout_marginLeft="5dp"
+                android:text="Location: Kista"/>
+            <TextView
+                android:id="@+id/textViewPostMessage"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:textSize="20sp"
+                android:layout_marginLeft="5dp"
+                android:text="Post content"
+
+                />
+
+        </LinearLayout>
 
         <TextView
-            android:id="@+id/textViewLocation"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:layout_marginLeft="5dp"
-            android:text="Location: Kista"/>
-        <TextView
             android:id="@+id/textViewOrderBefore"
+            android:layout_alignParentBottom="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
+            android:textSize="15sp"
             android:layout_marginLeft="5dp"
-            android:textColor="#ff0000"
+            android:layout_marginBottom="10dp"
+            android:textStyle="italic|bold"
+
+            android:textColor="#000000"
             android:text="Order before:15.00, 22/6/2016"
             />
-        <TextView
-            android:id="@+id/textViewPostMessage"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:textSize="20sp"
-            android:layout_marginLeft="5dp"
-            android:text="Post content"/>
-    </LinearLayout>
+
+    </RelativeLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -50,32 +67,48 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:gravity="center_vertical"
             android:orientation="vertical">
             <TextView
                 android:id="@+id/textViewDishLeft"
                 android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:textSize="20sp"
-                android:textColor="#80cf45"
-                android:layout_gravity="center_horizontal"
+                android:layout_height="30dp"
+                android:textColor="@color/colorPrimary"
+                android:layout_gravity="center"
+                android:textSize="18sp"
                 android:gravity="center"
-                android:text="5 left"/>
-            <ImageView
-                android:id="@+id/imageViewDishImage"
+                android:text="5 left"
+
+                />
+            <RelativeLayout
                 android:layout_width="90dp"
                 android:layout_height="90dp"
-                android:adjustViewBounds="true"
-                android:scaleType="centerCrop"
-                android:background="@drawable/foodbackground"/>
+                android:gravity="center"
+                android:layout_marginTop="0dp"
+
+                >
+                <de.hdodenhof.circleimageview.CircleImageView
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/imageViewDishImage"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:src="@drawable/foodbackground"
+                    app:civ_border_width="1dp"
+                    app:civ_border_color="#FF888888"/>
+
+
+            </RelativeLayout>
+
             <TextView
                 android:id="@+id/textViewDishPrice"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:textColor="#ff0000"
                 android:layout_gravity="center_horizontal"
                 android:gravity="center"
-                android:text="50 SEK"/>
+                android:text="50 SEK"
+                />
         </LinearLayout>
 
         <ImageView
