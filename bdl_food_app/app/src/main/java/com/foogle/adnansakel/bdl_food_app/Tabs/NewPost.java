@@ -266,6 +266,10 @@ public class NewPost extends Fragment {
         buttonPost.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
+                if(AppConstants.IsExploring){
+                    Toast.makeText(getContext(),"Please login first to be able to post",Toast.LENGTH_LONG).show();
+                    return;
+                }
                 String dishName, dishCategory, timeDateString;
                 dishName = editTextDishName.getText().toString();
                 dishCategory = editTextCategory.getText().toString();
@@ -345,7 +349,7 @@ public class NewPost extends Fragment {
                                             progress.dismiss();
                                             //startActivity(new Intent(NewPostActivity.this, NewsFeedActivity.class));
                                             //NewPostActivity.this.finish();
-                                            Toast.makeText(getContext(), "Posted sucessfully", Toast.LENGTH_LONG);
+                                            Toast.makeText(getContext(), "Food offer posted successfully.", Toast.LENGTH_LONG).show();
 
                                         }
                                     }

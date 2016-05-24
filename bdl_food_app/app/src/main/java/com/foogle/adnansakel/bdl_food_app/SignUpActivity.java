@@ -15,6 +15,7 @@ import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.Query;
 import com.firebase.client.ValueEventListener;
+import com.foogle.adnansakel.bdl_food_app.Helper.ConnectionCheck;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -34,6 +35,8 @@ public class SignUpActivity extends Activity implements View.OnClickListener{
     private String verifyPassword = "";
     private String userName = "";
     ProgressDialog progress;
+
+    ConnectionCheck connection;
 
     Context context;
     CharSequence text = "User account created successfully";
@@ -59,6 +62,8 @@ public class SignUpActivity extends Activity implements View.OnClickListener{
 
         context = this.getApplicationContext();
 
+        connection = new ConnectionCheck(this);
+
         Firebase.setAndroidContext(this);
         signup_ref = new Firebase(AppConstants.FirebaseUri);
     }
@@ -67,6 +72,13 @@ public class SignUpActivity extends Activity implements View.OnClickListener{
     @Override
     public void onClick(View v) {
         if(v == button_sign_up){
+            if(!connection.isConnected())return;
+            if(editText_email.getText().length() == 0 || editText_password.getText().toString().length() == 0 ||
+                    editText_verify_password.getText().toString().length() == 0 ||
+                    ((EditText)findViewById(R.id.editText_UserName)).getText().toString().length() == 0){
+                    Toast.makeText(SignUpActivity.this,"Please fill up all mandatory fields and try again",Toast.LENGTH_LONG).show();
+                return;
+            }
             progress = ProgressDialog.show(this, null,
                     null, true);
             progress.setContentView(R.layout.progressdialogview);

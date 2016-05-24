@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.foogle.adnansakel.bdl_food_app.DataModel.NewsFeedData;
 import com.foogle.adnansakel.bdl_food_app.DataModel.OrderData;
 import com.foogle.adnansakel.bdl_food_app.R;
 
@@ -26,6 +27,11 @@ public class OrderListAdapter extends BaseAdapter{
 
     public void addItem(OrderData orderData){
         orderList.add(orderData);
+        notifyDataSetChanged();
+    }
+
+    public void addItemAtBeginning(OrderData orderData){
+        orderList.add(0,orderData);
         notifyDataSetChanged();
     }
 

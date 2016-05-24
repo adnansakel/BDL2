@@ -14,7 +14,7 @@
             android:textColor="#F67800"
             android:textSize="45sp"
             android:textStyle="bold|italic"
-            android:text="Foogle"/>
+            android:text="Foodinga"/>
 
 
 
@@ -61,6 +61,27 @@
         android:text="Sign up"
         android:textColor="#ffffff"
         android:background="@drawable/rounded_rect_blue"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/llExplore">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20sp"
+            android:textStyle="normal"
+            android:text="Explore app without sign up"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorPrimary"/>
+    </LinearLayout>
+
 
 
 

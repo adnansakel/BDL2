@@ -39,16 +39,20 @@ public class OrderList extends Fragment {
         orderListAdapter = new OrderListAdapter(getContext());
         lvOrderList = (ListView)v.findViewById(R.id.lvOrderList);
         lvOrderList.setAdapter(orderListAdapter);
-        progress = ProgressDialog.show(getContext(), null,
-                null, true);
-        progress.setContentView(R.layout.progressdialogview);
-        progress.setCancelable(true);
-        loadOrderListData();
+
+        if(!AppConstants.IsExploring){
+            progress = ProgressDialog.show(getContext(), null,
+                    null, true);
+            progress.setContentView(R.layout.progressdialogview);
+            progress.setCancelable(true);
+            //progress.dismiss();
+            loadOrderListData();
+        }
         return v;
     }
 
     private void loadOrderListData(){
-        progress.show();
+        //progress.show();
         //Toast.makeText(getActivity(),"Load order data",Toast.LENGTH_SHORT).show();
         Firebase.setAndroidContext(getContext());
         new Firebase(AppConstants.FirebaseUri+"/"+AppConstants.USERS+"/"+AppConstants.FirebaseUserkey+"/"+AppConstants.ORDER_TO)
@@ -73,7 +77,7 @@ public class OrderList extends Fragment {
                         //System.out.println("PostID: " + orderData.getPostID().toString());
                         //System.out.println("UserID: "+orderData.getUserID().toString());
 
-                        orderListAdapter.addItem(orderData);
+                        orderListAdapter.addItemAtBeginning(orderData);
                         progress.dismiss();
 
 

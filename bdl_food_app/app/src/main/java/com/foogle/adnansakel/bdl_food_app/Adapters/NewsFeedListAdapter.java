@@ -35,6 +35,11 @@ public class NewsFeedListAdapter extends BaseAdapter{
         notifyDataSetChanged();
     }
 
+    public void addItemAtBeginning(NewsFeedData newsFeed){
+        newsFeedList.add(0,newsFeed);
+        notifyDataSetChanged();
+    }
+
     private class ViewHolder{
         TextView textViewDishName;
         TextView textViewLocation;

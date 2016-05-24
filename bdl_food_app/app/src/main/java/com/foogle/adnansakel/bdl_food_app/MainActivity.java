@@ -8,8 +8,10 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.foogle.adnansakel.bdl_food_app.Adapters.ViewPagerAdapter;
+import com.foogle.adnansakel.bdl_food_app.DataModel.AppConstants;
 import com.foogle.adnansakel.bdl_food_app.Helper.SlidingTabLayout;
 
 public class MainActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener{
@@ -83,6 +85,11 @@ public class MainActivity extends AppCompatActivity implements ViewPager.OnPageC
     @Override
     public void onPageSelected(int position) {
        // Toast.makeText(this,position+" Selected",Toast.LENGTH_LONG).show();
+        if(position == 1 && AppConstants.IsExploring){
+
+                Toast.makeText(this, "You must login to view your orders", Toast.LENGTH_LONG).show();
+
+        }
     }
 
     @Override

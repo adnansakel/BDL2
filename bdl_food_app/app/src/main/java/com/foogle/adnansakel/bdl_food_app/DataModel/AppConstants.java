@@ -21,4 +21,5 @@ public class AppConstants {
     public static  String ORDER_TO = "OrderTo";
     public static String USER_ID = "UserID";
     public static String POST_ID = "PostID";
+    public static boolean IsExploring = true;
 }

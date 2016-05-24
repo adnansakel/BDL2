@@ -31,10 +31,10 @@
         <Spinner
             android:layout_width="20dp"
             android:layout_height="match_parent"
-            android:textSize="18sp"
             android:id="@+id/spinner_sort_newsfeed">
         </Spinner>
         <Button
+            android:id="@+id/btnSearchNewsFeed"
             android:layout_width="45dp"
             android:layout_height="wrap_content"
             android:background="@drawable/search_black"
@@ -50,11 +50,27 @@
         android:layout_below="@+id/llnewsfeedheader"
         android:background="#aaaaaa"/>
 
-    <ListView
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/lvNewsfeed"
+        android:layout_below="@+id/llnewsfeedheader">
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/lvNewsfeed"
+            android:divider="@color/colorPrimary"
+            android:dividerHeight="1dp"
+            android:layout_marginTop="1dp"
+            ></ListView>
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/lvNewsfeedSearch"
+            android:divider="@color/colorPrimary"
+            android:dividerHeight="1dp"
+            android:layout_marginTop="1dp"
+            android:visibility="invisible"
+            ></ListView>
+    </RelativeLayout>
 
-        android:layout_marginTop="1dp"
-        android:layout_below="@+id/llnewsfeedheader"></ListView>
 </RelativeLayout>

@@ -76,6 +76,93 @@ public class PayPal_sdk extends Activity {
         button_paywithpaypal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                /*
+                order = new HashMap<String,Object>();
+                order.put(AppConstants.USER_ID, "");
+                order.put(AppConstants.POST_ID, newsFeedData.getPostKey());//post ID of the post being purchased
+                order.put("Location",newsFeedData.getLocation());
+                order.put("ValidTill",newsFeedData.getOrderBefore());
+                order.put("Price",newsFeedData.getPrice());
+                order.put("DishName",newsFeedData.getDishName());
+                order.put(AppConstants.USER_ID, newsFeedData.getPostOwner_UserID());
+                order.put("PostOwnerName",newsFeedData.getPostOwnerName());
+                progress = ProgressDialog.show(PayPal_sdk.this, null,
+                        null, true);
+                progress.setContentView(R.layout.progressdialogview);
+                progress.setCancelable(true);
+                new Firebase(AppConstants.FirebaseUri+"/"+AppConstants.USERS+"/"+AppConstants.FirebaseUserkey+"/"+AppConstants.ORDER_TO).push().setValue(order,
+                        new Firebase.CompletionListener() {
+                            @Override
+                            public void onComplete(FirebaseError firebaseError, Firebase firebase) {
+                                if (firebaseError != null) {
+                                    progress.dismiss();
+                                } else {
+                                    //success
+
+                                    order.put(AppConstants.USER_ID, AppConstants.UserID);//person who is buying it
+                                    new Firebase(AppConstants.FirebaseUri + "/" + AppConstants.POSTS + "/" + newsFeedData.getPostKey() + "/" + AppConstants.ORDER_FROM)
+                                            .push()
+                                            .setValue(order, new Firebase.CompletionListener() {
+                                                @Override
+                                                public void onComplete(FirebaseError firebaseError, Firebase firebase) {
+                                                    if (firebaseError != null) {
+                                                        progress.dismiss();
+                                                    } else {
+                                                        //success
+                                                        order.put("BuyerName",AppConstants.UserName);
+                                                        new Firebase(AppConstants.FirebaseUri + "/" + AppConstants.USERS + "/" + newsFeedData.getPostOwner_FirebaseKey()
+                                                                + "/" + AppConstants.ORDER_FROM).push().setValue(order, new Firebase.CompletionListener() {
+                                                            @Override
+                                                            public void onComplete(FirebaseError firebaseError, Firebase firebase) {
+                                                                if (firebaseError != null) {
+                                                                    progress.dismiss();
+                                                                } else {
+                                                                    //success
+                                                                    progress.dismiss();
+                                                                    Toast.makeText(getApplicationContext(), "Payment was done successfully. Please check your order list", Toast.LENGTH_LONG).show();
+                                                                    //startActivity(new Intent(PayPal_sdk.this, OrderListActivity.class));
+                                                                    PayPal_sdk.this.finish();
+                                                                }
+                                                            }
+                                                        });
+                                                    }
+                                                }
+                                            });
+                                }
+                            }
+                        });*/
+                //call pay pal sdk method
+                launchPayPalPayment();
+            }
+        });
+
+
+
+
+    }
+
+
+    private void launchPayPalPayment() {
+
+        PayPalPayment thingToBuy = new PayPalPayment(new BigDecimal("1"),"SEK", "safayat.b.hakim@iut-dhaka.edu",
+                PayPalPayment.PAYMENT_INTENT_SALE);
+
+        Intent intent = new Intent(PayPal_sdk.this, PaymentActivity.class);
+
+        intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION, paypalConfig);
+
+        intent.putExtra(PaymentActivity.EXTRA_PAYMENT, thingToBuy);
+
+        startActivityForResult(intent, REQUEST_CODE_PAYMENT);
+    }
+
+
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_CODE_PAYMENT) {
+            if (resultCode == Activity.RESULT_OK) {
 
                 order = new HashMap<String,Object>();
                 order.put(AppConstants.USER_ID, "");
@@ -119,7 +206,7 @@ public class PayPal_sdk extends Activity {
                                                                 } else {
                                                                     //success
                                                                     progress.dismiss();
-                                                                    Toast.makeText(getApplicationContext(), "Payment done succesfully ", Toast.LENGTH_LONG).show();
+                                                                    Toast.makeText(getApplicationContext(), "Payment was done successfully. Please check your order list", Toast.LENGTH_LONG).show();
                                                                     //startActivity(new Intent(PayPal_sdk.this, OrderListActivity.class));
                                                                     PayPal_sdk.this.finish();
                                                                 }
@@ -131,40 +218,6 @@ public class PayPal_sdk extends Activity {
                                 }
                             }
                         });
-                //call pay pal sdk method
-                //launchPayPalPayment();
-            }
-        });
-
-
-
-
-    }
-
-
-    private void launchPayPalPayment() {
-
-        PayPalPayment thingToBuy = new PayPalPayment(new BigDecimal(textView_amount.getText().toString()),"USD", editText_friend_name.getText().toString(),
-                PayPalPayment.PAYMENT_INTENT_SALE);
-
-        Intent intent = new Intent(PayPal_sdk.this, PaymentActivity.class);
-
-        intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION, paypalConfig);
-
-        intent.putExtra(PaymentActivity.EXTRA_PAYMENT, thingToBuy);
-
-        startActivityForResult(intent, REQUEST_CODE_PAYMENT);
-    }
-
-
-
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == REQUEST_CODE_PAYMENT) {
-            if (resultCode == Activity.RESULT_OK) {
-
-
 
             }
 

@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.foogle.adnansakel.bdl_food_app.DataModel.AppConstants;
 import com.foogle.adnansakel.bdl_food_app.DataModel.NewsFeedData;
@@ -92,6 +93,10 @@ public class PostDetailsActivity extends Activity implements View.OnClickListene
     public void onClick(View v) {
         if(v == bBuyButton)
         {
+            if(AppConstants.IsExploring){
+                Toast.makeText(PostDetailsActivity.this, "Please login first to be able to buy", Toast.LENGTH_LONG).show();
+                return;
+            }
             startActivity(new Intent(PostDetailsActivity.this,PayPal_selection.class).putExtra(AppConstants.POST_DETAILS,newsFeedData));
             this.finish();
             //progress = ProgressDialog.show(this, null,
